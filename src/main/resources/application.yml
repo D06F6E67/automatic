@@ -7,3 +7,7 @@ weixin:
   corpId: ${weixin_corpId}
   agentId: ${weixin_agentId}
   corpsecret: ${weixin_corpsecret}
+
+dingtalk:
+  accessToken: ${dingtalk_accessToken}
+  secret: ${dingtalk_secret}
