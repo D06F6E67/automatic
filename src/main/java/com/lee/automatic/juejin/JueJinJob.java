@@ -26,13 +26,11 @@ public class JueJinJob {
     @Resource
     private WinXinSendMessage winXinSendMessage;
 
-    @Scheduled(cron = "0 0 13 ? * 1,7")
-    @Scheduled(cron = "0 50 8 ? * 2,3,4,5,6")
+    @Scheduled(cron = "0 0 13 ? * SAT,SUN")
+    @Scheduled(cron = "0 50 8 ? * MON-FRI")
     public void job() {
         Map<String, String> headers = new HashMap<>(1);
         headers.put("cookie", jueJinConfig.getCookie());
-
-        log.info(jueJinConfig.getCookie());
 
         winXinSendMessage.sendMessage(
                 String.format("掘金签到结果：%s\n掘金抽奖结果：%s",
