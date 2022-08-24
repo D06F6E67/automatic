@@ -10,11 +10,13 @@
 
 ## 部署
 
+````
 ├── automatic
 │   ├── automatic.jar
 │   └── start.sh
 ├── docker-compose.yml
 └── Dockerfile
+````
 
 需要docker-compose.yml修改其中的环境变量，如不想使用环境变量可直接修改application.yml文件中的值。
 
