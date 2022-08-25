@@ -2,8 +2,8 @@ package com.lee.automatic.juejin;
 
 import com.lee.automatic.weixin.WinXinSendMessage;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Lee
  */
 @Slf4j
-@Configuration
+@Component
 public class JueJinJob {
 
     @Resource
