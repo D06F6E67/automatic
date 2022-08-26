@@ -3,6 +3,9 @@
 juejin:
   cookie: ${juejin_cookie}
 
+youdao:
+  cookie: ${youdao_cookie}
+
 weixin:
   corpId: ${weixin_corpId}
   agentId: ${weixin_agentId}

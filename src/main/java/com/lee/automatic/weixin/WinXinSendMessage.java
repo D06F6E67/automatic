@@ -31,7 +31,7 @@ public class WinXinSendMessage {
      *
      * @return token
      */
-    protected String getAccessToken() {
+    private String getAccessToken() {
         try {
             Map<String, Object> params = new HashMap<>(2);
             params.put("corpid", weiXinConfig.getCorpId());

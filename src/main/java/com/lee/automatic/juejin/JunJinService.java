@@ -10,16 +10,22 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 掘金 业务处理
+ * <pre><a href="https://blog.csdn.net/qq_35092597/article/details/125157948">参考</a></pre>
  *
  * @author Lee
  */
 @Slf4j
 @Service
 public class JunJinService {
+
+    @Resource
+    private JueJinConfig jueJinConfig;
 
     /**
      * 签到
@@ -97,5 +103,20 @@ public class JunJinService {
             log.error("获取矿石数量异常", e);
         }
         return -1;
+    }
+
+    /**
+     * 掘金签到、抽奖、获取矿石总数量
+     *
+     * @return 任务结果
+     */
+    public String job() {
+        Map<String, String> headers = new HashMap<>(1);
+        headers.put("cookie", jueJinConfig.getCookie());
+
+        return String.format("掘金签到结果：%s\n掘金抽奖结果：%s\n掘金矿石数量：%s\n",
+                        checkIn(headers),
+                        lottery(headers),
+                        getOreCount(headers));
     }
 }
