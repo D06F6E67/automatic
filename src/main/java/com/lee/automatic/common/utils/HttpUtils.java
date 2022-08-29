@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public class HttpUtils {
 
-    private static final OkHttpClient client = new OkHttpClient();
+    private static final OkHttpClient CLIENT = new OkHttpClient();
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     /**
@@ -34,10 +34,10 @@ public class HttpUtils {
         Request.Builder request = new Request.Builder().url(url);
 
         if (Objects.nonNull(headers) && !headers.isEmpty()) {
-            headers.forEach((k, v) -> request.addHeader(k, v));
+            headers.forEach(request::addHeader);
         }
 
-        return client.newCall(request.build()).execute();
+        return CLIENT.newCall(request.build()).execute();
     }
 
     /**
@@ -62,10 +62,10 @@ public class HttpUtils {
         request.post(requestBody);
 
         if (Objects.nonNull(headers) && !headers.isEmpty()) {
-            headers.forEach((k, v) -> request.addHeader(k, v));
+            headers.forEach(request::addHeader);
         }
 
-        return client.newCall(request.build()).execute();
+        return CLIENT.newCall(request.build()).execute();
     }
 
     /**
@@ -82,7 +82,7 @@ public class HttpUtils {
         FormBody.Builder formBody = new FormBody.Builder();
 
         if (Objects.nonNull(body) && !body.isEmpty()) {
-            body.forEach((k, v) -> formBody.add(k, v));
+            body.forEach(formBody::add);
         }
 
         Request.Builder request = new Request.Builder()
@@ -90,10 +90,10 @@ public class HttpUtils {
                 .post(formBody.build());
 
         if (Objects.nonNull(headers) && !headers.isEmpty()) {
-            headers.forEach((k, v) -> request.addHeader(k, v));
+            headers.forEach(request::addHeader);
         }
 
-        return client.newCall(request.build()).execute();
+        return CLIENT.newCall(request.build()).execute();
     }
 
     /**
