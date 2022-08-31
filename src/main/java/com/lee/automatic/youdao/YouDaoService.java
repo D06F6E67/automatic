@@ -31,12 +31,13 @@ public class YouDaoService {
      */
     public String checkIn(Map<String, String> headers) {
         try {
-            Response response = HttpUtils.get(YouDaoConfig.CHECK_IN_URL, headers, null);
+            Response response = HttpUtils.post(YouDaoConfig.CHECK_IN_URL, headers, null);
             CheckinResp checkinResp = JSONObject.parseObject(response.body().string(), CheckinResp.class);
 
             return String.format("%sMB 总获得%sMB",
-                    checkinResp.getTotal()/1024/1024,
-                    checkinResp.getSpace()/1024/1024);
+                    // Total / 1024 / 1024 --> Total >> 20
+                    checkinResp.getSpace() >> 20,
+                    checkinResp.getTotal() >> 20);
         } catch (Exception e) {
             log.error("有道笔记签到失败", e);
             return "签到失败";
