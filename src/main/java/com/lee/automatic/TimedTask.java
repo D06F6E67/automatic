@@ -29,8 +29,6 @@ public class TimedTask {
     @Scheduled(cron = "0 30 8 ? * MON-FRI")
     public void job() {
 
-        winXinSendMessage.sendMessage(String.format("%s\n%s",
-                junJinService.job(),
-                youDaoService.job()));
+        winXinSendMessage.sendMessage(junJinService.job());
     }
 }
