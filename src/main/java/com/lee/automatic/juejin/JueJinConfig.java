@@ -4,6 +4,10 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 /**
  * 掘金 配置信息
  *
@@ -18,6 +22,22 @@ public class JueJinConfig {
      * cookie
      */
     private String cookie;
+
+    /**
+     * 请求头信息
+     */
+    private Map<String, String> headers;
+
+
+    public Map<String, String> getHeaders() {
+
+        if (Objects.isNull(headers)) {
+            headers = new HashMap<>(1);
+            headers.put("cookie", cookie);
+        }
+
+        return headers;
+    }
 
     /**
      * 获取今日状态
@@ -39,5 +59,21 @@ public class JueJinConfig {
      * 矿石数量
      */
     public static final String ORE_COUNT_URL = "https://api.juejin.cn/growth_api/v1/get_cur_point";
+    /**
+     * 获取bug
+     */
+    public static final String GET_BUGFIX_URL = "https://api.juejin.cn/user_api/v1/bugfix/not_collect";
+    /**
+     * 收集bug
+     */
+    public static final String COLLECT_BUGFIX_URL = "https://api.juejin.cn/user_api/v1/bugfix/collect";
+    /**
+     * 获取活动ID
+     */
+    public static final String GET_COMPETITION_URL = "https://api.juejin.cn/user_api/v1/bugfix/competition";
+    /**
+     * bug数量
+     */
+    public static final String BUG_COUNT_URL = "https://api.juejin.cn/user_api/v1/bugfix/user";
 
 }
