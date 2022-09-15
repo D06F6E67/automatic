@@ -11,18 +11,16 @@ import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
- * 掘金 业务处理
+ * 掘金 签到抽奖
  * <pre><a href="https://blog.csdn.net/qq_35092597/article/details/125157948">参考</a></pre>
  *
  * @author Lee
  */
 @Slf4j
 @Service
-public class JunJinService {
+public class JueJinChickInService {
 
     @Resource
     private JueJinConfig jueJinConfig;
@@ -30,12 +28,11 @@ public class JunJinService {
     /**
      * 签到
      *
-     * @param headers 请求头
      * @return 签到结果
      */
-    public String checkIn(Map<String, String> headers) {
+    public String checkIn() {
         try {
-            Response response = HttpUtils.get(JueJinConfig.TODAY_STATUS_URL, headers, null);
+            Response response = HttpUtils.get(JueJinConfig.TODAY_STATUS_URL, jueJinConfig.getHeaders(), null);
             JueJinResp<Boolean> jueJinResp = JSONObject.parseObject(response.body().string(),
                     new TypeReference<JueJinResp<Boolean>>(){});
 
@@ -43,7 +40,7 @@ public class JunJinService {
                 return "今日已签到";
             }
 
-            HttpUtils.post(JueJinConfig.CHECK_IN_URL, headers, null);
+            HttpUtils.post(JueJinConfig.CHECK_IN_URL, jueJinConfig.getHeaders(), null);
 
             return "签到成功";
         } catch (Exception e) {
@@ -55,23 +52,23 @@ public class JunJinService {
     /**
      * 抽奖
      *
-     * @param headers 请求头
      * @return 抽奖结果
      */
-    public String lottery(Map<String, String> headers) {
+    public String lottery() {
         try {
-            Response response = HttpUtils.get(JueJinConfig.FREE_LOTTERY_URL, headers, null);
+            Response response = HttpUtils.get(JueJinConfig.FREE_LOTTERY_URL, jueJinConfig.getHeaders(), null);
             JueJinResp<FreeLotteryResp> jueJinResp = JSONObject.parseObject(response.body().string(),
                     new TypeReference<JueJinResp<FreeLotteryResp>>(){});
 
             if (jueJinResp.getErrNo() != 0) {
+                log.error("掘金获取免费抽奖次数失败：{}", jueJinResp.getErrMsg());
                 return "获取免费抽奖次数失败";
             }
             if (jueJinResp.getData().getFreeCount() <= 0) {
                 return "没有免费抽奖次数";
             }
 
-            Response post = HttpUtils.post(JueJinConfig.LOTTERY_URL, headers, null);
+            Response post = HttpUtils.post(JueJinConfig.LOTTERY_URL, jueJinConfig.getHeaders(), null);
             JueJinResp<LotteryResp> lotteryResp = JSONObject.parseObject(post.body().string(),
                     new TypeReference<JueJinResp<LotteryResp>>() {});
 
@@ -85,20 +82,20 @@ public class JunJinService {
     /**
      * 矿石数量
      *
-     * @param headers 请求头
      * @return 矿石数量
      *          <pre>-1：异常</pre>
      */
-    public Integer getOreCount(Map<String, String> headers) {
+    public Integer getOreCount() {
         try {
 
-            Response response = HttpUtils.get(JueJinConfig.ORE_COUNT_URL, headers, null);
+            Response response = HttpUtils.get(JueJinConfig.ORE_COUNT_URL, jueJinConfig.getHeaders(), null);
             JueJinResp<Integer> jueJinResp = JSONObject.parseObject(response.body().string(),
                     new TypeReference<JueJinResp<Integer>>() {});
 
             if (jueJinResp.getErrNo() == 0) {
                 return jueJinResp.getData();
             }
+            log.error("掘金获取矿石数量失败：{}", jueJinResp.getErrMsg());
         } catch (Exception e) {
             log.error("获取矿石数量异常", e);
         }
@@ -111,12 +108,7 @@ public class JunJinService {
      * @return 任务结果
      */
     public String job() {
-        Map<String, String> headers = new HashMap<>(1);
-        headers.put("cookie", jueJinConfig.getCookie());
-
-        return String.format("掘金签到结果：%s\n掘金抽奖结果：%s\n掘金矿石数量：%s\n",
-                        checkIn(headers),
-                        lottery(headers),
-                        getOreCount(headers));
+        return String.format("掘金\n  签到结果：%s\n  抽奖结果：%s\n  矿石数量：%s\n",
+                        checkIn(), lottery(), getOreCount());
     }
 }
