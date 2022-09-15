@@ -2,7 +2,7 @@ package com.lee.automatic.weixin;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lee.automatic.common.utils.HttpUtils;
-import com.lee.automatic.weixin.model.TextMessageReq;
+import com.lee.automatic.weixin.model.MessageReq;
 import com.lee.automatic.weixin.model.WeiXinResp;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service
-public class WinXinSendMessage {
+public class WeiXinSendMessage {
 
     @Resource
     private WeiXinConfig weiXinConfig;
@@ -53,14 +53,15 @@ public class WinXinSendMessage {
      * @param message 文本内容
      * @return 返回信息
      */
-    public String sendMessage(String message) {
+    public String sendMessage(MessageReq message) {
         try {
             Map<String, Object> params = new HashMap<>(1);
             params.put("access_token", getAccessToken());
 
+            message.setAgentid(weiXinConfig.getAgentId());
+
             Response response = HttpUtils.post(
-                    HttpUtils.spliceUrl(WeiXinConfig.SEND_MESSAGE_URL, params), null,
-                    new TextMessageReq(weiXinConfig.getAgentId(), message));
+                    HttpUtils.spliceUrl(WeiXinConfig.SEND_MESSAGE_URL, params), null, message);
 
             WeiXinResp weiXinResp = JSONObject.parseObject(response.body().string(), WeiXinResp.class);
             return weiXinResp.getErrmsg();
