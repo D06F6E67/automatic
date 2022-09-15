@@ -53,8 +53,8 @@
         </filter>
     </appender>
 
-	<logger name="ph.xpower" level="info" />
-	<logger name="org.springframework" level="warn" />
+	<logger name="com.lee" level="info" />
+	<logger name="org.springframework" level="info" />
 
 	<root level="info">
 		<appender-ref ref="STDOUT" />
