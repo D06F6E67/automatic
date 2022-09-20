@@ -3,6 +3,7 @@ package com.lee.automatic.juejin;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.lee.automatic.common.utils.HttpUtils;
+import com.lee.automatic.juejin.model.DipLuckResp;
 import com.lee.automatic.juejin.model.FreeLotteryResp;
 import com.lee.automatic.juejin.model.JueJinResp;
 import com.lee.automatic.juejin.model.LotteryResp;
@@ -80,6 +81,25 @@ public class JueJinChickInService {
     }
 
     /**
+     * 沾运气
+     *
+     * @return 运气总数
+     *          <pre>-1：异常</pre>
+     */
+    public Integer dipLuck() {
+        try {
+            Response response = HttpUtils.post(JueJinConfig.DIP_LUCKY_URL, jueJinConfig.getHeaders(), null);
+            JueJinResp<DipLuckResp> dipLuckResp = JSONObject.parseObject(response.body().string(),
+                    new TypeReference<JueJinResp<DipLuckResp>>() {});
+
+            return dipLuckResp.getData().getTotalValue();
+        } catch (Exception e) {
+            log.error("掘金沾运气异常", e);
+        }
+        return -1;
+    }
+
+    /**
      * 矿石数量
      *
      * @return 矿石数量
@@ -108,7 +128,7 @@ public class JueJinChickInService {
      * @return 任务结果
      */
     public String job() {
-        return String.format("掘金\n  签到结果：%s\n  抽奖结果：%s\n  矿石数量：%s\n",
-                        checkIn(), lottery(), getOreCount());
+        return String.format("掘金\n  签到结果：%s\n  抽奖结果：%s\n  运气数量：%s\n  矿石数量：%s\n",
+                        checkIn(), lottery(), dipLuck(), getOreCount());
     }
 }
