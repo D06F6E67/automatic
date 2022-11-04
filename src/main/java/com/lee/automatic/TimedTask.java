@@ -2,6 +2,7 @@ package com.lee.automatic;
 
 import com.lee.automatic.juejin.JueJinBugFixService;
 import com.lee.automatic.juejin.JueJinChickInService;
+import com.lee.automatic.juejin.game.JueJinGameService;
 import com.lee.automatic.weixin.WeiXinSendMessage;
 import com.lee.automatic.weixin.model.TextCardMessageReq;
 import com.lee.automatic.youdao.YouDaoService;
@@ -25,6 +26,8 @@ public class TimedTask {
     @Resource
     private JueJinBugFixService jueJinBugFixService;
     @Resource
+    private JueJinGameService jueJinGameService;
+    @Resource
     private YouDaoService youDaoService;
     @Resource
     private WeiXinSendMessage weiXinSendMessage;
@@ -36,6 +39,7 @@ public class TimedTask {
         weiXinSendMessage.sendMessage(
                 new TextCardMessageReq(
                         junJinService.job() + jueJinBugFixService.job()
+                                + jueJinGameService.job()
                 )
         );
     }

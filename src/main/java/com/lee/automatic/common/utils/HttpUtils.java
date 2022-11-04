@@ -50,6 +50,25 @@ public class HttpUtils {
     public static Response post(String url,
                                 @Nullable Map<String, String> headers,
                                 @Nullable Object body) throws IOException {
+        return post(url, null, headers, body);
+    }
+
+    /**
+     * 发送post请求
+     *
+     * @param url     链接
+     * @param params  参数
+     * @param headers 请求头
+     * @param body    请求体
+     */
+    public static Response post(String url,
+                                @Nullable Map<String, Object> params,
+                                @Nullable Map<String, String> headers,
+                                @Nullable Object body) throws IOException {
+
+        if (Objects.nonNull(params)) {
+            url = spliceUrl(url, params);
+        }
 
         Request.Builder request = new Request.Builder().url(url);
 

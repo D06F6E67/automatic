@@ -28,7 +28,6 @@ public class JueJinConfig {
      */
     private Map<String, String> headers;
 
-
     public Map<String, String> getHeaders() {
 
         if (Objects.isNull(headers)) {
