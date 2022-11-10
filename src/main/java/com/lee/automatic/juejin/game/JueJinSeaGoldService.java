@@ -8,6 +8,7 @@ import com.lee.automatic.common.utils.JwtUtils;
 import com.lee.automatic.juejin.game.enums.DirectionEnum;
 import com.lee.automatic.juejin.game.enums.RoleEnum;
 import com.lee.automatic.juejin.game.model.*;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import org.springframework.stereotype.Service;
@@ -259,16 +260,20 @@ public class JueJinSeaGoldService {
      * @return 获取矿石数据
      */
     public SeaEndResp endGame() {
+        String string = "";
         try {
             Response response = HttpUtils.post(GameConfig.SEA_END_URL, config.getParams(),
                     config.getHeaders(), new SeaEndReq());
-            GameResp<SeaEndResp> seaGoldResp = JSONObject.parseObject(response.body().string(),
+            string = response.body().string();
+            System.out.println(string);
+            GameResp<SeaEndResp> seaGoldResp = JSONObject.parseObject(string,
                     new TypeReference<GameResp<SeaEndResp>>() {
                     });
 
             return seaGoldResp.getData();
         } catch (Exception e) {
             log.error("结束游戏异常", e);
+            log.error("结束游戏数据: {}", string);
         }
         return null;
     }
@@ -289,6 +294,7 @@ public class JueJinSeaGoldService {
      *
      * @return 获取矿石数量
      */
+    @SneakyThrows
     public String autoSeaGold() {
         login();
 
@@ -327,6 +333,8 @@ public class JueJinSeaGoldService {
             }
             runMark = end.getTodayDiamond() < end.getTodayLimitDiamond();
             todayDiamond = end.getTodayDiamond();
+
+            Thread.sleep(1000);
         } while (++runNumber < GameConfig.RUN_MAX_NUMBER && runMark);
 
         return String.format("  海底掘金：\n    今日获得：%s个\n    运行次数：%s次\n",
