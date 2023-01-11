@@ -53,7 +53,9 @@ public class JueJinSeaGoldService {
                     new TypeReference<GameResp<SeaHomeResp>>() {
                     });
 
-            return seaHomeResp.getData().getGameStatus();
+            if (Objects.nonNull(seaHomeResp)) {
+                return seaHomeResp.getData().getGameStatus();
+            }
         } catch (Exception e) {
             log.error("获取游戏主页信息异常", e);
         }
