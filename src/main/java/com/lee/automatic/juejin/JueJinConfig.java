@@ -79,4 +79,13 @@ public class JueJinConfig {
      */
     public static final String BUG_COUNT_URL = "https://api.juejin.cn/user_api/v1/bugfix/user";
 
+    /**
+     * 文章列表
+     */
+    public static final String ARTICLE_LIST = "https://api.juejin.cn/recommend_api/v1/article/recommend_all_feed";
+    /**
+     * 沸点列表
+     */
+    public static final String BOILING_POINT_LIST = "https://api.juejin.cn/recommend_api/v1/short_msg/recommend";
+
 }
