@@ -10,7 +10,6 @@ import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,14 +25,6 @@ public class JueJinBrowseService {
     @Resource
     private JueJinConfig jueJinConfig;
 
-    private Map<String, Object> getParam() {
-        Map<String, Object> param = new HashMap<>(1);
-
-        param.put("aid", 2608);
-
-        return param;
-    }
-
     /**
      * 文章列表
      *
@@ -41,7 +32,7 @@ public class JueJinBrowseService {
      */
     public int articleList() {
         try {
-            Response response = HttpUtils.post(JueJinConfig.ARTICLE_LIST, getParam(), jueJinConfig.getHeaders(), null);
+            Response response = HttpUtils.post(JueJinConfig.ARTICLE_LIST, jueJinConfig.getHeaders(), null);
 
             JueJinResp<List<Map<String, Object>>> resp = JSONObject.parseObject(response.body().string(),
                     new TypeReference<JueJinResp<List<Map<String, Object>>>>() {});
@@ -60,7 +51,7 @@ public class JueJinBrowseService {
      */
     public int boilingPointList() {
         try {
-            Response response = HttpUtils.post(JueJinConfig.BOILING_POINT_LIST, getParam(),
+            Response response = HttpUtils.post(JueJinConfig.BOILING_POINT_LIST,
                     jueJinConfig.getHeaders(), new BoilingPointListReq());
 
             JueJinResp<List<Map<String, Object>>> resp = JSONObject.parseObject(response.body().string(),
