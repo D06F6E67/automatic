@@ -1,6 +1,5 @@
-package com.lee.automatic.juejin;
+package com.lee.automatic.weixin;
 
-import com.lee.automatic.weixin.WeiXinSendMessage;
 import com.lee.automatic.weixin.model.TextCardMessageReq;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

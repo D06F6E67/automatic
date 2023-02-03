@@ -14,6 +14,7 @@ services:
       - EXPOSE=8080
       - juejin_cookie=// 浏览器抓包看下cookie
       - youdao_cookie=// 浏览器抓包看下cookie
+      - pudn_authorization=// 浏览器抓包看下cookie
       - weixin_corpId=// 企业ID
       - weixin_agentId=// 应用ID
       - weixin_corpsecret=// 应用Secret

@@ -1,5 +1,3 @@
-
-
 juejin:
   cookie: ${juejin_cookie}
 
@@ -14,3 +12,6 @@ weixin:
 dingtalk:
   accessToken: ${dingtalk_accessToken}
   secret: ${dingtalk_secret}
+
+pudn:
+  authorization: ${pudn_authorization}
