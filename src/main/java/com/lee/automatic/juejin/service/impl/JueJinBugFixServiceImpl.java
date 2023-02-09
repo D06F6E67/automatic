@@ -1,13 +1,16 @@
-package com.lee.automatic.juejin;
+package com.lee.automatic.juejin.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.lee.automatic.common.utils.HttpUtils;
+import com.lee.automatic.juejin.config.JueJinConfig;
 import com.lee.automatic.juejin.model.BugInfoResp;
 import com.lee.automatic.juejin.model.CompetitionResp;
 import com.lee.automatic.juejin.model.JueJinResp;
+import com.lee.automatic.juejin.service.JueJinService;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
+import org.springframework.core.Ordered;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -22,7 +25,7 @@ import java.util.List;
  */
 @Slf4j
 @Service
-public class JueJinBugFixService {
+public class JueJinBugFixServiceImpl implements JueJinService, Ordered {
 
     @Resource
     private JueJinConfig jueJinConfig;
@@ -120,6 +123,7 @@ public class JueJinBugFixService {
      *
      * @return 任务结果
      */
+    @Override
     public String job() {
 
         List<BugInfoResp> bugList = getBug();
@@ -131,4 +135,8 @@ public class JueJinBugFixService {
         return String.format("  收集BUG ：%s个\n  BUG数量 ：%s个\n", bugList.size(), getBugCount(getCompetition()));
     }
 
+    @Override
+    public int getOrder() {
+        return 2;
+    }
 }

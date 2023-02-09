@@ -1,4 +1,4 @@
-package com.lee.automatic.juejin.game;
+package com.lee.automatic.juejin.config;
 
 import com.lee.automatic.common.utils.DateUtils;
 import lombok.Data;
@@ -32,7 +32,7 @@ public class GameConfig {
     /**
      * 海底掘金数据加密密钥
      */
-    final String privateKey = "-----BEGIN PRIVATE KEY-----\n" +
+    public final String privateKey = "-----BEGIN PRIVATE KEY-----\n" +
             "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgMHsoxVB3554q3sDA\n" +
             "MwxRpPsMTdKXQy2jcsSiOcSRGIChRANCAAQSRWIkNTyVglR6dLojE+W8Um1QIM0X\n" +
             "Rz8X9xfTsoLB4LhD+c4qyhSdgmxvg7yUyo1dojWPXo6ZeT0KRxBBdvN+\n" +

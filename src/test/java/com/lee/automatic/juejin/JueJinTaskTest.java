@@ -1,6 +1,8 @@
 package com.lee.automatic.juejin;
 
-import com.lee.automatic.juejin.game.JueJinGameService;
+import com.lee.automatic.juejin.service.impl.JueJinGameServiceImpl;
+import com.lee.automatic.juejin.service.impl.JueJinBugFixServiceImpl;
+import com.lee.automatic.juejin.service.impl.JueJinChickInServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -17,19 +19,19 @@ import javax.annotation.Resource;
 public class JueJinTaskTest {
 
     @Resource
-    private JueJinChickInService junJinService;
+    private JueJinChickInServiceImpl junJinService;
     @Resource
-    private JueJinBugFixService jueJinBugFixService;
+    private JueJinBugFixServiceImpl jueJinBugFixServiceImpl;
     @Resource
-    private JueJinGameService jueJinGameService;
+    private JueJinGameServiceImpl jueJinGameServiceImpl;
 
 
     @Test
     public void job() {
         System.out.println(
                 junJinService.job()
-                + jueJinBugFixService.job()
-                + jueJinGameService.job());
+                + jueJinBugFixServiceImpl.job()
+                + jueJinGameServiceImpl.job());
     }
 
 }

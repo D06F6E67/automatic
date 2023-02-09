@@ -1,4 +1,4 @@
-package com.lee.automatic.juejin.game.enums;
+package com.lee.automatic.juejin.model.game.enums;
 
 /**
  * 角色信息

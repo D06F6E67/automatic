@@ -1,4 +1,4 @@
-package com.lee.automatic.juejin.game.model;
+package com.lee.automatic.juejin.model.game.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

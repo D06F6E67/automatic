@@ -1,6 +1,6 @@
-package com.lee.automatic.juejin.game.model;
+package com.lee.automatic.juejin.model.game.model;
 
-import com.lee.automatic.juejin.game.enums.DirectionEnum;
+import com.lee.automatic.juejin.model.game.enums.DirectionEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

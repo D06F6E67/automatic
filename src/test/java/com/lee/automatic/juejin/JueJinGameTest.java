@@ -1,13 +1,13 @@
 package com.lee.automatic.juejin;
 
 import com.alibaba.fastjson.JSONObject;
-import com.lee.automatic.juejin.game.GameConfig;
-import com.lee.automatic.juejin.game.JueJinGameService;
-import com.lee.automatic.juejin.game.JueJinSeaGoldService;
-import com.lee.automatic.juejin.game.enums.DirectionEnum;
-import com.lee.automatic.juejin.game.model.SeaEndResp;
-import com.lee.automatic.juejin.game.model.SeaGoldResp;
-import com.lee.automatic.juejin.game.model.SeaPosition;
+import com.lee.automatic.juejin.config.GameConfig;
+import com.lee.automatic.juejin.service.impl.JueJinGameServiceImpl;
+import com.lee.automatic.juejin.service.JueJinSeaGoldService;
+import com.lee.automatic.juejin.model.game.enums.DirectionEnum;
+import com.lee.automatic.juejin.model.game.model.SeaEndResp;
+import com.lee.automatic.juejin.model.game.model.SeaGoldResp;
+import com.lee.automatic.juejin.model.game.model.SeaPosition;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,21 +29,21 @@ public class JueJinGameTest {
     @Resource
     private GameConfig gameConfig;
     @Resource
-    private JueJinGameService jueJinGameService;
+    private JueJinGameServiceImpl jueJinGameServiceImpl;
     @Resource
     private JueJinSeaGoldService seaGoldService;
 
 
     @Test
     public void getUid() {
-        jueJinGameService.getUid();
+        jueJinGameServiceImpl.getUid();
 
         System.out.println(gameConfig.getUid());
     }
 
     @Test
     public void getToken() {
-        jueJinGameService.getToken();
+        jueJinGameServiceImpl.getToken();
 
         System.out.println(gameConfig.getToken());
     }
@@ -76,8 +76,8 @@ public class JueJinGameTest {
     }
 
     public void before() {
-        jueJinGameService.getUid();
-        jueJinGameService.getToken();
+        jueJinGameServiceImpl.getUid();
+        jueJinGameServiceImpl.getToken();
     }
 
     @Test
@@ -113,7 +113,7 @@ public class JueJinGameTest {
 
     @Test
     public void seaGoldJob(){
-        System.out.println(jueJinGameService.job());
+        System.out.println(jueJinGameServiceImpl.job());
     }
 
 }

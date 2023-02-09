@@ -1,5 +1,6 @@
 package com.lee.automatic.juejin;
 
+import com.lee.automatic.juejin.service.impl.JueJinBrowseServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -17,23 +18,23 @@ import javax.annotation.Resource;
 public class JueJinBrowseTest {
 
     @Resource
-    private JueJinBrowseService jueJinBrowseService;
+    private JueJinBrowseServiceImpl jueJinBrowseServiceImpl;
 
     @Test
     public void articleList() {
-        int num = jueJinBrowseService.articleList();
+        int num = jueJinBrowseServiceImpl.articleList();
         Assert.isTrue(num >= 0, "获取文章失败");
     }
 
     @Test
     public void boilingPointList() {
-        int num = jueJinBrowseService.boilingPointList();
+        int num = jueJinBrowseServiceImpl.boilingPointList();
         Assert.isTrue(num >= 0, "获取沸点失败");
     }
 
     @Test
     public void job() {
-        jueJinBrowseService.job();
+        jueJinBrowseServiceImpl.job();
     }
 
 }

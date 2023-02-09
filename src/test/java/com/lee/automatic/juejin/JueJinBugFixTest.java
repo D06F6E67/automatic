@@ -2,6 +2,7 @@ package com.lee.automatic.juejin;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lee.automatic.juejin.model.BugInfoResp;
+import com.lee.automatic.juejin.service.impl.JueJinBugFixServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -19,12 +20,12 @@ import java.util.List;
 public class JueJinBugFixTest {
 
     @Resource
-    private JueJinBugFixService jueJinBugFixService;
+    private JueJinBugFixServiceImpl jueJinBugFixServiceImpl;
 
     @Test
     public void getBug() {
 
-        List<BugInfoResp> bug = jueJinBugFixService.getBug();
+        List<BugInfoResp> bug = jueJinBugFixServiceImpl.getBug();
 
         bug.forEach(System.out::println);
 
@@ -32,23 +33,23 @@ public class JueJinBugFixTest {
 
         System.out.println(JSONObject.toJSONString(bugInfoResp));
 
-        Boolean aBoolean = jueJinBugFixService.collectBugfix(bug.get(0));
+        Boolean aBoolean = jueJinBugFixServiceImpl.collectBugfix(bug.get(0));
         System.out.println(aBoolean);
 
     }
 
     @Test
     public void getCompetition() {
-        String competition = jueJinBugFixService.getCompetition();
+        String competition = jueJinBugFixServiceImpl.getCompetition();
 
-        Integer bugCount = jueJinBugFixService.getBugCount(competition);
+        Integer bugCount = jueJinBugFixServiceImpl.getBugCount(competition);
 
         System.out.println(competition + "->" + bugCount);
     }
 
     @Test
     public void job() {
-        System.out.println(jueJinBugFixService.job());
+        System.out.println(jueJinBugFixServiceImpl.job());
     }
 
 }

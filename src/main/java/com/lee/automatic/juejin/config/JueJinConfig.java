@@ -1,4 +1,4 @@
-package com.lee.automatic.juejin;
+package com.lee.automatic.juejin.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

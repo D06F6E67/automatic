@@ -1,13 +1,14 @@
-package com.lee.automatic.juejin.game;
+package com.lee.automatic.juejin.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.lee.automatic.common.utils.DateUtils;
 import com.lee.automatic.common.utils.HttpUtils;
 import com.lee.automatic.common.utils.JwtUtils;
-import com.lee.automatic.juejin.game.enums.DirectionEnum;
-import com.lee.automatic.juejin.game.enums.RoleEnum;
-import com.lee.automatic.juejin.game.model.*;
+import com.lee.automatic.juejin.config.GameConfig;
+import com.lee.automatic.juejin.model.game.enums.DirectionEnum;
+import com.lee.automatic.juejin.model.game.enums.RoleEnum;
+import com.lee.automatic.juejin.model.game.model.*;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;

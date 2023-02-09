@@ -1,12 +1,15 @@
-package com.lee.automatic.juejin;
+package com.lee.automatic.juejin.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.lee.automatic.common.utils.HttpUtils;
+import com.lee.automatic.juejin.config.JueJinConfig;
 import com.lee.automatic.juejin.model.BoilingPointListReq;
 import com.lee.automatic.juejin.model.JueJinResp;
+import com.lee.automatic.juejin.service.JueJinService;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
+import org.springframework.core.Ordered;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,7 +23,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service
-public class JueJinBrowseService {
+public class JueJinBrowseServiceImpl implements JueJinService, Ordered {
 
     @Resource
     private JueJinConfig jueJinConfig;
@@ -69,7 +72,13 @@ public class JueJinBrowseService {
      * 掘金文章、沸点
      * 增加活跃避免系统检测
      */
+    @Override
     public String job() {
         return String.format("  文章数量：%s个\n  沸点数量：%s个\n", articleList(), boilingPointList());
+    }
+
+    @Override
+    public int getOrder() {
+        return 3;
     }
 }

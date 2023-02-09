@@ -1,6 +1,6 @@
-package com.lee.automatic.juejin.game.model;
+package com.lee.automatic.juejin.model.game.model;
 
-import com.lee.automatic.juejin.game.enums.RoleEnum;
+import com.lee.automatic.juejin.model.game.enums.RoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
