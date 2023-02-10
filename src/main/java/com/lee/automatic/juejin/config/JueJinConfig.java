@@ -59,6 +59,10 @@ public class JueJinConfig {
      */
     public static final String DIP_LUCKY_URL = "https://api.juejin.cn/growth_api/v1/lottery_lucky/dip_lucky";
     /**
+     * 围观大奖
+     */
+    public static final String GLOBAL_BIG_URL = "https://api.juejin.cn/growth_api/v1/lottery_history/global_big";
+    /**
      * 矿石数量
      */
     public static final String ORE_COUNT_URL = "https://api.juejin.cn/growth_api/v1/get_cur_point";

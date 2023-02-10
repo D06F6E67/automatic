@@ -4,17 +4,17 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.lee.automatic.common.utils.HttpUtils;
 import com.lee.automatic.juejin.config.JueJinConfig;
-import com.lee.automatic.juejin.model.DipLuckResp;
-import com.lee.automatic.juejin.model.FreeLotteryResp;
-import com.lee.automatic.juejin.model.JueJinResp;
-import com.lee.automatic.juejin.model.LotteryResp;
+import com.lee.automatic.juejin.model.*;
 import com.lee.automatic.juejin.service.JueJinService;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import org.springframework.core.Ordered;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * 掘金 抽奖、沾运气
@@ -59,14 +59,42 @@ public class JueJinDipLuckServiceImpl implements JueJinService, Ordered {
     }
 
     /**
+     * 围观大奖沾参数
+     */
+    public DipLuckReq jackpot() {
+        try {
+            Response response = HttpUtils.post(JueJinConfig.GLOBAL_BIG_URL, jueJinConfig.getHeaders(), new GlobalBigReq());
+            JueJinResp<LotteriesResp> jueJinResp = JSONObject.parseObject(response.body().string(),
+                    new TypeReference<JueJinResp<LotteriesResp>>(){});
+
+            if (Objects.isNull(jueJinResp)){
+                return null;
+            }
+            if (Objects.isNull(jueJinResp.getData())) {
+                return null;
+            }
+            List<LotterieResp> lotteries = jueJinResp.getData().getLotteries();
+            if (Objects.isNull(lotteries) || lotteries.size() > 0) {
+                return new DipLuckReq(lotteries.get(0).getHistoryId());
+            }
+
+        } catch (Exception e) {
+            log.error("掘金围观大奖沾运气异常", e);
+        }
+
+        return null;
+    }
+
+    /**
      * 沾运气
      *
+     * @param dipLuck 大奖参数
      * @return 运气总数
      *          <pre>-1：异常</pre>
      */
-    public Integer dipLuck() {
+    public Integer dipLuck(@Nullable DipLuckReq dipLuck) {
         try {
-            Response response = HttpUtils.post(JueJinConfig.DIP_LUCKY_URL, jueJinConfig.getHeaders(), null);
+            Response response = HttpUtils.post(JueJinConfig.DIP_LUCKY_URL, jueJinConfig.getHeaders(), dipLuck);
             JueJinResp<DipLuckResp> dipLuckResp = JSONObject.parseObject(response.body().string(),
                     new TypeReference<JueJinResp<DipLuckResp>>() {});
 
@@ -75,6 +103,21 @@ public class JueJinDipLuckServiceImpl implements JueJinService, Ordered {
             log.error("掘金沾运气异常", e);
         }
         return -1;
+    }
+
+    /**
+     * 两次沾运气
+     *
+     * @return 运气总数
+     *          <pre>-1：异常</pre>
+     */
+    public Integer dipLuck() {
+        DipLuckReq jackpot = jackpot();
+        if (Objects.nonNull(jackpot)) {
+            dipLuck(jackpot);
+        }
+
+        return dipLuck(null);
     }
 
 
