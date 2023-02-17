@@ -2,8 +2,8 @@ package com.lee.automatic;
 
 import com.lee.automatic.juejin.JueJinJob;
 import com.lee.automatic.pudn.PudnChickInService;
-import com.lee.automatic.weixin.WeiXinSendMessage;
-import com.lee.automatic.weixin.model.TextCardMessageReq;
+import com.lee.automatic.weixin.service.WeiXinSendMessageService;
+import com.lee.automatic.weixin.model.send.TextCardMessageReq;
 import com.lee.automatic.youdao.YouDaoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -27,13 +27,13 @@ public class TimedTask {
     @Resource
     private YouDaoService youDaoService;
     @Resource
-    private WeiXinSendMessage weiXinSendMessage;
+    private WeiXinSendMessageService WXSendMsgService;
 
     @Scheduled(cron = "0 0 11 ? * SAT,SUN")
     @Scheduled(cron = "0 30 8 ? * MON-FRI")
     public void job() {
 
-        weiXinSendMessage.sendMessage(
+        WXSendMsgService.sendMessage(
                 new TextCardMessageReq(
                         jueJinJob.job()
                                 + pudnChickInService.job()

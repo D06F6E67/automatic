@@ -1,4 +1,4 @@
-package com.lee.automatic.weixin.model;
+package com.lee.automatic.weixin.model.send;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

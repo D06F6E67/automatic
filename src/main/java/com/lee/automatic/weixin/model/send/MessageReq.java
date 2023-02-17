@@ -1,9 +1,9 @@
-package com.lee.automatic.weixin.model;
+package com.lee.automatic.weixin.model.send;
 
 import lombok.Data;
 
 /**
- * 消息实体类接口
+ * 发送 消息实体类接口
  *
  * @author Lee
  */

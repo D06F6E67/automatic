@@ -1,4 +1,4 @@
-package com.lee.automatic.weixin.model;
+package com.lee.automatic.weixin.model.send;
 
 import com.lee.automatic.common.utils.DateUtils;
 import lombok.AllArgsConstructor;

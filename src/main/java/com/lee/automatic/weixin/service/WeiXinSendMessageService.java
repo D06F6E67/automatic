@@ -1,8 +1,9 @@
-package com.lee.automatic.weixin;
+package com.lee.automatic.weixin.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lee.automatic.common.utils.HttpUtils;
-import com.lee.automatic.weixin.model.MessageReq;
+import com.lee.automatic.weixin.WeiXinConfig;
+import com.lee.automatic.weixin.model.send.MessageReq;
 import com.lee.automatic.weixin.model.WeiXinResp;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
@@ -21,7 +22,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service
-public class WeiXinSendMessage {
+public class WeiXinSendMessageService {
 
     @Resource
     private WeiXinConfig weiXinConfig;
