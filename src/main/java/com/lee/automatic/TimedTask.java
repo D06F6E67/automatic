@@ -2,6 +2,7 @@ package com.lee.automatic;
 
 import com.lee.automatic.juejin.JueJinJob;
 import com.lee.automatic.pudn.PudnChickInService;
+import com.lee.automatic.weixin.RobotEnum;
 import com.lee.automatic.weixin.service.WeiXinSendMessageService;
 import com.lee.automatic.weixin.model.send.TextCardMessageReq;
 import com.lee.automatic.youdao.YouDaoService;
@@ -35,6 +36,7 @@ public class TimedTask {
 
         WXSendMsgService.sendMessage(
                 new TextCardMessageReq(
+                        RobotEnum.AUTOMATIC,
                         jueJinJob.job()
                                 + pudnChickInService.job()
                 )

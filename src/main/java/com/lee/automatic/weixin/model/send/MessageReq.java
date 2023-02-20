@@ -1,6 +1,9 @@
 package com.lee.automatic.weixin.model.send;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.lee.automatic.weixin.RobotEnum;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 发送 消息实体类接口
@@ -8,6 +11,7 @@ import lombok.Data;
  * @author Lee
  */
 @Data
+@NoArgsConstructor
 public class MessageReq {
 
     /**
@@ -23,8 +27,15 @@ public class MessageReq {
      */
     private Integer agentid;
 
-    public MessageReq() {
-        this.touser = "@all";
-        this.msgtype = "textcard";
+    /**
+     * 使用那个机器人
+     */
+    @JSONField(serialize = false)
+    private RobotEnum which;
+
+    public MessageReq(String touser, String msgtype, RobotEnum which) {
+        this.touser = touser;
+        this.msgtype = msgtype;
+        this.which = which;
     }
 }

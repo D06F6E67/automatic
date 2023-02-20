@@ -21,11 +21,12 @@ public class WeiXinConfig {
     /**
      * 企业应用ID
      */
-    private Integer agentId;
+    private Integer[] agentId;
     /**
      * 应用密钥
      */
-    private String corpsecret;
+    private String[] corpsecret;
+
 
 
     /**

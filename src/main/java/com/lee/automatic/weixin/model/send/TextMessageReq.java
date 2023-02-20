@@ -1,8 +1,8 @@
 package com.lee.automatic.weixin.model.send;
 
+import com.lee.automatic.weixin.RobotEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * 微信发送文本消息 请求
@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
  * @author Lee
  */
 @Data
-@NoArgsConstructor
 public class TextMessageReq extends MessageReq {
 
     /**
@@ -21,8 +20,8 @@ public class TextMessageReq extends MessageReq {
      */
     private WeiXinText text;
 
-    public TextMessageReq(String text) {
-        super();
+    public TextMessageReq(String touser, RobotEnum which, String text) {
+        super(touser, "text", which);
         this.text = new WeiXinText(text);
     }
 }

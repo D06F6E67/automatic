@@ -1,9 +1,9 @@
 package com.lee.automatic.weixin.model.send;
 
 import com.lee.automatic.common.utils.DateUtils;
+import com.lee.automatic.weixin.RobotEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * 微信发送文本卡片消息 请求
@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
  * @author Lee
  */
 @Data
-@NoArgsConstructor
 public class TextCardMessageReq extends MessageReq {
 
     /**
@@ -22,8 +21,8 @@ public class TextCardMessageReq extends MessageReq {
      */
     private WeiXinTextCar textcard;
 
-    public TextCardMessageReq(String description) {
-        super();
+    public TextCardMessageReq(RobotEnum robot, String description) {
+        super("@all", "textcard", robot);
         this.textcard = new WeiXinTextCar(description);
     }
 }

@@ -2,6 +2,7 @@ package com.lee.automatic.weixin.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lee.automatic.common.utils.HttpUtils;
+import com.lee.automatic.weixin.RobotEnum;
 import com.lee.automatic.weixin.WeiXinConfig;
 import com.lee.automatic.weixin.model.send.MessageReq;
 import com.lee.automatic.weixin.model.WeiXinResp;
@@ -30,13 +31,14 @@ public class WeiXinSendMessageService {
     /**
      * 获取token
      *
+     * @param robot 指定机器人
      * @return token
      */
-    private String getAccessToken() {
+    private String getAccessToken(RobotEnum robot) {
         try {
             Map<String, Object> params = new HashMap<>(2);
             params.put("corpid", weiXinConfig.getCorpId());
-            params.put("corpsecret", weiXinConfig.getCorpsecret());
+            params.put("corpsecret", weiXinConfig.getCorpsecret()[robot.getValue()]);
 
             Response response = HttpUtils.get(WeiXinConfig.ACCESS_TOKEN_URL, null, params);
             WeiXinResp weiXinResp = JSONObject.parseObject(response.body().string(), WeiXinResp.class);
@@ -57,9 +59,9 @@ public class WeiXinSendMessageService {
     public String sendMessage(MessageReq message) {
         try {
             Map<String, Object> params = new HashMap<>(1);
-            params.put("access_token", getAccessToken());
+            params.put("access_token", getAccessToken(message.getWhich()));
 
-            message.setAgentid(weiXinConfig.getAgentId());
+            message.setAgentid(weiXinConfig.getAgentId()[message.getWhich().getValue()]);
 
             Response response = HttpUtils.post(
                     HttpUtils.spliceUrl(WeiXinConfig.SEND_MESSAGE_URL, params), null, message);

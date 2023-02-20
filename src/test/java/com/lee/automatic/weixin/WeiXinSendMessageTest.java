@@ -23,7 +23,7 @@ public class WeiXinSendMessageTest {
     @Test
     public void getBug() {
 
-        WXSendMsgService.sendMessage(new TextCardMessageReq("掘金\n  签到结果：签到成功\n  抽奖结果：bug\n  矿石数量：12345\n  收集BUG ：5个\n  BUG数量 ：12345个\n"));
+        WXSendMsgService.sendMessage(new TextCardMessageReq(RobotEnum.AUTOMATIC, "掘金\n  签到结果：签到成功\n  抽奖结果：bug\n  矿石数量：12345\n  收集BUG ：5个\n  BUG数量 ：12345个\n"));
 
     }
 
