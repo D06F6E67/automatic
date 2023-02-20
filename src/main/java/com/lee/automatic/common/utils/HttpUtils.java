@@ -7,6 +7,7 @@ import org.springframework.lang.Nullable;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * http请求
@@ -15,7 +16,10 @@ import java.util.Objects;
  */
 public class HttpUtils {
 
-    private static final OkHttpClient CLIENT = new OkHttpClient();
+    private static final OkHttpClient CLIENT =
+            new OkHttpClient().newBuilder()
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS).build();
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     /**
