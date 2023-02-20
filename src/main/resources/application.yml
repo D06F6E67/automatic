@@ -8,10 +8,16 @@ weixin:
   corpId: ${weixin_corpId}
   agentId: ${weixin_agentId}
   corpsecret: ${weixin_corpsecret}
+  token: ${weixin_token}
+  encodingAESKey: ${weixin_encodingAESKey}
 
 dingtalk:
   accessToken: ${dingtalk_accessToken}
   secret: ${dingtalk_secret}
+
+chargpt:
+  openai:
+    authorization: ${chargpt_authorization}
 
 pudn:
   authorization: ${pudn_authorization}

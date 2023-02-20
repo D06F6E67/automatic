@@ -10,6 +10,10 @@ public enum RobotEnum {
      * 自动助手机器人
      */
     AUTOMATIC(0),
+    /**
+     * OpenAI机器人
+     */
+    OPENAI(1),
     ;
 
     private int value;
