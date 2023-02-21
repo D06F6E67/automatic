@@ -4,8 +4,11 @@ import com.lee.automatic.weixin.service.WeiXinInteractMessageService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 微信机器人消息接收
+ *
  * @author Lee
  */
 @RestController
@@ -19,26 +22,17 @@ public class WeiXinController {
      * 配置服务器时微信验证
      */
     @GetMapping
-    public String verify(
-            @RequestParam("msg_signature") String msgSignature,
-            @RequestParam("timestamp") String timestamp,
-            @RequestParam("nonce") String nonce,
-            @RequestParam("echostr") String echostr) {
+    public String verify(HttpServletRequest request) {
 
-
-        return interactMsgService.verify(msgSignature, timestamp, nonce, echostr);
+        return interactMsgService.verify(request);
     }
 
     /**
      * 消息接收和被动回复
      */
     @PostMapping
-    public void receiveReplyMessage(
-            @RequestParam("msg_signature") String msgSignature,
-            @RequestParam("timestamp") String timestamp,
-            @RequestParam("nonce") String nonce,
-            @RequestBody String body) {
+    public void receiveReplyMessage(@RequestBody String body, HttpServletRequest request) {
 
-        interactMsgService.receiveReplyMessage(msgSignature, timestamp, nonce, body);
+        interactMsgService.receiveReplyMessage(body, request);
     }
 }

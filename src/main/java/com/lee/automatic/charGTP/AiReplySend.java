@@ -1,20 +1,20 @@
-package com.lee.automatic.weixin.service;
+package com.lee.automatic.charGTP;
 
-import com.lee.automatic.charGTP.OpenAiService;
 import com.lee.automatic.weixin.RobotEnum;
 import com.lee.automatic.weixin.model.send.TextMessageReq;
+import com.lee.automatic.weixin.service.WeiXinSendMessageService;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 /**
- * 微信回复openAi回复的消息
+ * openAi回复的消息发送
  *
  * @author Lee
  */
 @Service
-public class WeiXinSendAiReply {
+public class AiReplySend {
 
     @Resource
     private OpenAiService aiService;
@@ -28,7 +28,7 @@ public class WeiXinSendAiReply {
      * @param fromUserName 询问人
      */
     @Async
-    public void swap(String content, String fromUserName) {
+    public void WXSend(String content, String fromUserName) {
 
         String answer = aiService.ask(content);
 
