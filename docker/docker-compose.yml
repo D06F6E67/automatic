@@ -15,13 +15,13 @@ services:
       - JAR_NAME=automatic
       - EXPOSE=8080
       - juejin_cookie=// 浏览器抓包看下cookie
-      - youdao_cookie=// 浏览器抓包看下cookie
+      #- youdao_cookie=// 浏览器抓包看下cookie  暂时取消
       - pudn_authorization=// 浏览器抓包看下cookie
       - weixin_corpId=// 企业ID
       - weixin_agentId=// 应用ID
       - weixin_corpsecret=// 应用Secret
       - weixin_token=// 应用配置接收API设置的Token
       - weixin_encodingAESKey=// 应用配置接收API设置的EncodingAESKey
-      - dingtalk_accessToken=// 钉钉机器人webhook中access_token值
-      - dingtalk_secret=// 加签密钥
+      - dingtalk_appKey=// 钉钉应用的appkey
+      - dingtalk_appSecret=// 钉钉应用的appSecret
       - chargpt_authorization=// charGPT中生成的authorization

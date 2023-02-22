@@ -12,8 +12,8 @@ weixin:
   encodingAESKey: ${weixin_encodingAESKey}
 
 dingtalk:
-  accessToken: ${dingtalk_accessToken}
-  secret: ${dingtalk_secret}
+  appKey: ${dingtalk_appKey}
+  appSecret: ${dingtalk_appSecret}
 
 chargpt:
   openai:

@@ -42,29 +42,44 @@
 1. 登陆企业微信自己创建一个
 2. 登陆[企业微信管理平台](https://work.weixin.qq.com/wework_admin/frame#index)
 3. 我的企业 --> 获取企业ID
-4. 应用管理 --> 创建应用 --> 获取应用的ID和Secret ![image.png](assets/weixin_getAppInfo.png)
+4. 应用管理 --> 创建应用 --> 获取应用的ID和Secret <br/>![image.png](assets/weixin_getAppInfo.png)
 5. 第4步中最下面 --> 企业可信IP, 将自己服务器的IP配置进去，不然无法退送消息
 
-### 钉钉获取token和密钥
-
-群管理 --> 智能群助手 --> 添加自定义Webhook机器人 --> 安全设置选择加密![image.png](assets/dingtalk_getRobotInfo.png)
-
+# CharGPT
+1. 账号登陆[获取gpt的key](https://platform.openai.com/account/api-keys)
+2. 创建key 然后将这个key写入docker-compose <br/>![img.png](assets/gpt_confoig.png)
 
 # CharGPT(微信)
 
 ## 效果 
 
-![img.png](assets/gpt.png)
+![img.png](assets/weixin_gpt.png)
 
 ## 需要用到的
 
 1. 企业微信
-2. CharGPT账号
+2. CharGPT的key
 
 ## 创建机器人和上方步骤一样
 
 1. 将AgentId和Secret写入docker-compose
 2. 服务器开放8888端口
 3. 应用管理 --> 刚创建的应用 --> 设置API接收 
-4. url配置 http://IP:8888/weixin 将token和key写入docker-compose
-![img.png](assets/weixin_setAPI.png)
+4. url配置 http://IP:8888/weixin 将token和key写入docker-compose <br/> ![img.png](assets/weixin_setAPI.png)
+
+# CharGPT(钉钉)
+
+## 效果
+
+![img.png](assets/dingtalk_gpt.png)
+
+## 需要用到的
+
+1. 钉钉
+2. CharGPT的key
+
+## 创建钉钉机器人
+1. 登陆[钉钉开发平台](https://open-dev.dingtalk.com/?spm=dd_developers.homepage.0.0.205a4a97lQMxqS#/)
+2. 应用开发 --> 企业内部开发 --> 创建应用 <br/> ![img.png](assets/dingtalk_create.png)
+3. 获取应用的信息，将两个配置写入 docker-compose中 <br/> ![img.png](assets/dingtalk_info.png)
+4. 设置消息退送地址，自己的服务器公网IP:8888/dingtalk  然后点击发布 <br/> ![img.png](assets/dinktalk_config.png)

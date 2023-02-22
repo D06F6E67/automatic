@@ -4,7 +4,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 /**
- *
+ * charGPT 请求参数
  *
  * @author Lee
  */

@@ -39,7 +39,7 @@ public class OpenAiConfig {
 
 
     /**
-     * 用户信息
+     * 获取charGPT回应
      */
     public static final String URL = "https://api.openai.com/v1/completions";
 }
