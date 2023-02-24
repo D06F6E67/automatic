@@ -24,4 +24,4 @@ services:
       - weixin_encodingAESKey=// 应用配置接收API设置的EncodingAESKey
       - dingtalk_appKey=// 钉钉应用的appkey
       - dingtalk_appSecret=// 钉钉应用的appSecret
-      - chargpt_authorization=// charGPT中生成的authorization
+      - chatgpt_authorization=// chatGPT中生成的authorization

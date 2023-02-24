@@ -1,10 +1,10 @@
-package com.lee.automatic.charGTP.model;
+package com.lee.automatic.chatGTP.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 /**
- * charGPT 请求参数
+ * chatGPT 请求参数
  *
  * @author Lee
  */

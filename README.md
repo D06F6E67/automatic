@@ -45,11 +45,11 @@
 4. 应用管理 --> 创建应用 --> 获取应用的ID和Secret <br/>![image.png](assets/weixin_getAppInfo.png)
 5. 第4步中最下面 --> 企业可信IP, 将自己服务器的IP配置进去，不然无法退送消息
 
-# CharGPT
+# ChatGPT
 1. 账号登陆[获取gpt的key](https://platform.openai.com/account/api-keys)
 2. 创建key 然后将这个key写入docker-compose <br/>![img.png](assets/gpt_confoig.png)
 
-# CharGPT(微信)
+# ChatGPT(微信)
 
 ## 效果 
 
@@ -58,7 +58,7 @@
 ## 需要用到的
 
 1. 企业微信
-2. CharGPT的key
+2. ChatGPT的key
 
 ## 创建机器人和上方步骤一样
 
@@ -67,7 +67,7 @@
 3. 应用管理 --> 刚创建的应用 --> 设置API接收 
 4. url配置 http://IP:8888/weixin 将token和key写入docker-compose <br/> ![img.png](assets/weixin_setAPI.png)
 
-# CharGPT(钉钉)
+# ChatGPT(钉钉)
 
 ## 效果
 
@@ -76,7 +76,7 @@
 ## 需要用到的
 
 1. 钉钉
-2. CharGPT的key
+2. ChatGPT的key
 
 ## 创建钉钉机器人
 1. 登陆[钉钉开发平台](https://open-dev.dingtalk.com/?spm=dd_developers.homepage.0.0.205a4a97lQMxqS#/)

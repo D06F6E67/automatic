@@ -1,4 +1,4 @@
-package com.lee.automatic.charGTP;
+package com.lee.automatic.chatGTP;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * charGPT openAI配置
+ * chatGPT openAI配置
  *
  * @author Lee
  */
 @Data
 @Configuration
-@ConfigurationProperties("chargpt.openai")
+@ConfigurationProperties("chatgpt.openai")
 public class OpenAiConfig {
 
     /**
@@ -39,7 +39,7 @@ public class OpenAiConfig {
 
 
     /**
-     * 获取charGPT回应
+     * 获取chatGPT回应
      */
     public static final String URL = "https://api.openai.com/v1/completions";
 }

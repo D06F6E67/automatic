@@ -15,9 +15,9 @@ dingtalk:
   appKey: ${dingtalk_appKey}
   appSecret: ${dingtalk_appSecret}
 
-chargpt:
+chatgpt:
   openai:
-    authorization: ${chargpt_authorization}
+    authorization: ${chatgpt_authorization}
 
 pudn:
   authorization: ${pudn_authorization}

@@ -1,8 +1,8 @@
-package com.lee.automatic.charGTP;
+package com.lee.automatic.chatGTP;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.lee.automatic.charGTP.model.OpenAiReq;
+import com.lee.automatic.chatGTP.model.OpenAiReq;
 import com.lee.automatic.common.utils.HttpUtils;
 import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 import java.io.IOException;
 
 /**
- * charGPT openAI service
+ * chatGPT openAI service
  *
  * @author Lee
  */
@@ -39,7 +39,7 @@ public class OpenAiService {
             return jsonObject.getJSONArray("choices").getJSONObject(0).getString("text");
 
         } catch (IOException e) {
-            log.error("CharGPT AI问答异常", e);
+            log.error("ChatGPT AI问答异常", e);
         }
 
         return StringUtil.EMPTY_STRING;

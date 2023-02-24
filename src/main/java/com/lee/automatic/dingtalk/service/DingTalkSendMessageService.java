@@ -61,7 +61,7 @@ public class DingTalkSendMessageService {
     public void oToMessages(String userId, String message) {
 
         Map<String, String> msgParam = new HashMap<>(2);
-        msgParam.put("title", "CharGPT回应");
+        msgParam.put("title", "ChatGPT回应");
         msgParam.put("text", message);
 
         BatchSendOTOHeaders batchSendOTOHeaders = new BatchSendOTOHeaders();
@@ -92,7 +92,7 @@ public class DingTalkSendMessageService {
     public void groupMessages(String groupId, String message) {
 
         Map<String, String> msgParam = new HashMap<>(2);
-        msgParam.put("title", "CharGPT回应");
+        msgParam.put("title", "ChatGPT回应");
         msgParam.put("text", message);
 
         OrgGroupSendHeaders orgGroupSendHeaders = new OrgGroupSendHeaders();

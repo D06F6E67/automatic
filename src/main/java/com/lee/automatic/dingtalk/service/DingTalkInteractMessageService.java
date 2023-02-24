@@ -1,6 +1,6 @@
 package com.lee.automatic.dingtalk.service;
 
-import com.lee.automatic.charGTP.AiReplySend;
+import com.lee.automatic.chatGTP.AiReplySend;
 import com.lee.automatic.dingtalk.DingTalkConfig;
 import com.lee.automatic.dingtalk.model.ReceiveMessageResp;
 import lombok.extern.slf4j.Slf4j;

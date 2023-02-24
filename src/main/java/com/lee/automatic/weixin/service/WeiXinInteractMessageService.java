@@ -1,6 +1,6 @@
 package com.lee.automatic.weixin.service;
 
-import com.lee.automatic.charGTP.AiReplySend;
+import com.lee.automatic.chatGTP.AiReplySend;
 import com.lee.automatic.weixin.WeiXinConfig;
 import com.lee.automatic.weixin.aes.WXBizMsgCrypt;
 import lombok.extern.slf4j.Slf4j;

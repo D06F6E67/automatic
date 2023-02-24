@@ -1,4 +1,4 @@
-package com.lee.automatic.charGTP;
+package com.lee.automatic.chatGTP;
 
 import com.lee.automatic.dingtalk.service.DingTalkSendMessageService;
 import com.lee.automatic.weixin.RobotEnum;
