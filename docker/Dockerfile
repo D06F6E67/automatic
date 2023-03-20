@@ -1,5 +1,9 @@
 FROM openjdk:8-jre
+
+ADD ../target/automatic-*.jar /work/automatic.jar
 WORKDIR /work
-ENTRYPOINT ["/work/start.sh"]
-VOLUME /work /logs
-EXPOSE ${EXPOSE}
+
+ENV TZ=Asia/Shanghai
+    JAVA_OPTS=""
+
+ENTRYPOINT ["java", "$JAVA_OPTS", "-jar", "automatic.jar"]
