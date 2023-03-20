@@ -14,20 +14,13 @@
 2. 共有IP(云服务器自带)
 
 ## 部署
-
-````
-├── automatic
-│   ├── automatic.jar
-│   └── start.sh
-├── docker-compose.yml
-└── Dockerfile
-````
-
-需要docker-compose.yml修改其中的环境变量，如不想使用环境变量可直接修改application.yml文件中的值。
+1. 将docker/docker-compose.yml 放到要部署的服务器上
+2. 修改docker-compose.yml中的环境变量
+3. docker-compose up -d
 
 掘金cookie必须配置，微信和钉钉的根据需要自己配置。
 
-目前只使用了微信发送消息，钉钉发送消息需去juejinJob中修改。
+目前只使用了微信发送消息，钉钉发送消息需修改源代码，目前没有做配置项(后续会增加该配置)。
 
 ## 配置获取
 

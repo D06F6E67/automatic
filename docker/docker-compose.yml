@@ -2,14 +2,15 @@ version: '3.0'
 
 services:
   automatic:
+    container_name: automatic
     image: registry.cn-hangzhou.aliyuncs.com/4c6565/automatic
     restart: always
     ports:
-      - "8080:8888"
+      - "8888:8080"
     volumes:
       - ./logs:/work/logs
     environment:
-      - JAVA_OPTS="-Xms300m -Xmx400m"
+      - JAVA_OPTS=-Xms300m -Xmx400m
       - juejin_cookie=// 浏览器抓包看下cookie
       #- youdao_cookie=// 浏览器抓包看下cookie  暂时取消
       - pudn_authorization=// 浏览器抓包看下cookie
