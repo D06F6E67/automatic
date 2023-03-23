@@ -5,15 +5,14 @@ import com.alibaba.fastjson.TypeReference;
 import com.lee.automatic.common.utils.HttpUtils;
 import com.lee.automatic.juejin.config.GameConfig;
 import com.lee.automatic.juejin.config.JueJinConfig;
-import com.lee.automatic.juejin.model.game.model.GameResp;
 import com.lee.automatic.juejin.model.JueJinResp;
 import com.lee.automatic.juejin.model.UserInfoResp;
+import com.lee.automatic.juejin.model.game.model.GameResp;
 import com.lee.automatic.juejin.service.JueJinSeaGoldService;
 import com.lee.automatic.juejin.service.JueJinService;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import org.springframework.core.Ordered;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
@@ -23,7 +22,7 @@ import javax.annotation.Resource;
  * @author Lee
  */
 @Slf4j
-@Service
+// @Service
 public class JueJinGameServiceImpl implements JueJinService, Ordered {
 
     @Resource
