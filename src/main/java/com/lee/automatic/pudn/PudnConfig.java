@@ -19,9 +19,13 @@ import java.util.Objects;
 public class PudnConfig {
 
     /**
-     * 授权
+     * 用户名
      */
-    private String authorization;
+    private String username;
+    /**
+     * 密码
+     */
+    private String password;
 
     /**
      * 请求头信息
@@ -29,15 +33,21 @@ public class PudnConfig {
     private Map<String, String> headers;
 
     public Map<String, String> getHeaders() {
-
-        if (Objects.isNull(headers)) {
-            headers = new HashMap<>(1);
-            headers.put("authorization", authorization);
-        }
-
         return headers;
     }
 
+    public void setHeaders(String authorization) {
+
+        if (Objects.isNull(headers)) {
+            headers = new HashMap<>(1);
+        }
+        headers.put("authorization", "Bearer " + authorization);
+    }
+
+    /**
+     * 登陆
+     */
+    public static String LOGIN_URL = "https://api.pudn.com/portal/sso/login";
     /**
      * 签到
      */

@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.lee.automatic.common.utils.HttpUtils;
 import com.lee.automatic.pudn.model.GoldInfoResp;
+import com.lee.automatic.pudn.model.LoginReq;
+import com.lee.automatic.pudn.model.LoginResp;
 import com.lee.automatic.pudn.model.PudnResp;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
@@ -26,6 +28,19 @@ public class PudnChickInService {
     @Resource
     private PudnConfig pudnConfig;
 
+    public void login() {
+        try {
+            Response response = HttpUtils.post(PudnConfig.LOGIN_URL, null,
+                    new LoginReq(pudnConfig.getUsername(), pudnConfig.getPassword()));
+
+            PudnResp<LoginResp> pudnResp = JSONObject.parseObject(response.body().string(),
+                    new TypeReference<PudnResp<LoginResp>>() {});
+
+            pudnConfig.setHeaders(pudnResp.getData().getToken());
+        } catch (Exception e) {
+            log.error("pudn登陆异常", e);
+        }
+    }
 
     /**
      * pudn签到
@@ -34,11 +49,13 @@ public class PudnChickInService {
      */
     public String chickIn() {
         try {
+
+            login();
+
             Response response = HttpUtils.get(PudnConfig.CHICK_IN_URL, pudnConfig.getHeaders(), null);
 
             PudnResp<String> pudnResp = JSONObject.parseObject(response.body().string(),
                     new TypeReference<PudnResp<String>>() {});
-
 
             return pudnResp.getData();
         } catch (Exception e) {

@@ -3,7 +3,7 @@ package com.lee.automatic.pudn.model;
 import lombok.Data;
 
 /**
- * pudn响应
+ * pudn 响应
  *
  * @author Lee
  */
@@ -22,5 +22,4 @@ public class PudnResp<T> {
      * 响应数据
      */
     private T data;
-
 }

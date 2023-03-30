@@ -13,7 +13,8 @@ services:
       - JAVA_OPTS=-Xms300m -Xmx400m
       - juejin_cookie=// 浏览器抓包看下cookie
       #- youdao_cookie=// 浏览器抓包看下cookie  暂时取消
-      - pudn_authorization=// 浏览器抓包看下cookie
+      - pudn_username=// pudn账号
+      - pudn_password=// pudn密码
       - weixin_corpId=// 企业ID
       - weixin_agentId=// 应用ID
       - weixin_corpsecret=// 应用Secret

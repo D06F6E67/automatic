@@ -3,7 +3,7 @@ package com.lee.automatic.pudn.model;
 import lombok.Data;
 
 /**
- * pudn金币信息相应
+ * pudn 金币信息响应
  *
  * @author Lee
  */

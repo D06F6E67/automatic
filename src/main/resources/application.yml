@@ -20,4 +20,5 @@ chatgpt:
     authorization: ${chatgpt_authorization}
 
 pudn:
-  authorization: ${pudn_authorization}
+  username: ${pudn_username}
+  password: ${pudn_password}
