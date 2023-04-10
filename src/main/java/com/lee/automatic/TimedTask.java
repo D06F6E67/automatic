@@ -38,7 +38,7 @@ public class TimedTask {
                 new TextCardMessageReq(
                         RobotEnum.AUTOMATIC,
                         jueJinJob.job()
-                                + pudnChickInService.job()
+                                // + pudnChickInService.job()
                 )
         );
     }
