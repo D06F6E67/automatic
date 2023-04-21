@@ -4,13 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lee.automatic.chatGTP.model.OpenAiReq;
 import com.lee.automatic.common.utils.HttpUtils;
-import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.io.IOException;
+import java.util.Objects;
 
 /**
  * chatGPT openAI service
@@ -36,12 +35,16 @@ public class OpenAiService {
 
             JSONObject jsonObject = JSON.parseObject(post.body().string());
 
+            JSONObject error = jsonObject.getJSONObject("error");
+            if (Objects.nonNull(error)) {
+                return error.getString("message");
+            }
+
             return jsonObject.getJSONArray("choices").getJSONObject(0).getString("text");
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("ChatGPT AI问答异常", e);
+            return e.getMessage();
         }
-
-        return StringUtil.EMPTY_STRING;
     }
 }
