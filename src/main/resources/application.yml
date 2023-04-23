@@ -18,6 +18,7 @@ dingtalk:
 chatgpt:
   openai:
     authorization: ${chatgpt_authorization}
+    megumiParentMessageId: ${chatgpt_megumiParentMessageId}
 
 pudn:
   username: ${pudn_username}

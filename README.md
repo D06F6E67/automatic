@@ -42,6 +42,12 @@
 1. 账号登陆[获取gpt的key](https://platform.openai.com/account/api-keys)
 2. 创建key 然后将这个key写入docker-compose <br/>![img.png](assets/gpt_confoig.png)
 
+# ChartGPT(基于Web页面)
+> 使用[大佬的web页面](https://megumi.ml)，调用页面中的接口，重新解析然后发送到钉钉或者微信  
+> [web页面开源代码](https://github.com/Chanzhaoyu/chatgpt-web)
+1. 使用大佬的web页面登陆，随便问一个问题然后将下图中的ID写入配置文件 megumiParentMessageId中，此步骤可以忽略。
+![获取ID](assets/megumi.png)
+
 # ChatGPT(微信)
 
 ## 效果 

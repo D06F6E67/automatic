@@ -33,7 +33,7 @@ public class AiReplySend {
     @Async
     public void WXSend(String content, String fromUserName) {
 
-        String answer = aiService.ask(content);
+        String answer = aiService.megumiAsk(content);
 
         weiXinSendMessage.sendMessage(
                 new TextMessageReq(
@@ -52,7 +52,7 @@ public class AiReplySend {
     @Async
     public void dingTalkSend(String content, boolean oto, String id) {
 
-        String answer = aiService.ask(content);
+        String answer = aiService.megumiAsk(content);
 
         if (oto) {
             dingTalkSendMessage.oToMessages(id, answer);

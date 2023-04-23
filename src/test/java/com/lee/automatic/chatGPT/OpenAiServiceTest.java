@@ -22,4 +22,9 @@ public class OpenAiServiceTest {
     public void ask() {
         System.out.println(openAiService.ask("hello"));
     }
+
+    @Test
+    public void megumiAsk() {
+        System.out.println(openAiService.megumiAsk("hello"));
+    }
 }
