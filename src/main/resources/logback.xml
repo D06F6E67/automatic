@@ -22,12 +22,12 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- 日志文件名格式 -->
             <fileNamePattern>${log.path}/info.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
-            <!-- 日志最大的历史 180天 -->
-            <maxHistory>180</maxHistory>
+            <!-- 日志最大的历史 5天 -->
+            <maxHistory>5</maxHistory>
             <!-- 单个文件最大大小 -->
-            <maxFileSize>200MB</maxFileSize>
+            <maxFileSize>10MB</maxFileSize>
             <!-- 总的文件大小 -->
-            <totalSizeCap>10GB</totalSizeCap>
+            <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>INFO</level>
