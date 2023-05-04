@@ -8,6 +8,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * openAi回复的消息发送
@@ -18,11 +20,17 @@ import javax.annotation.Resource;
 public class AiReplySend {
 
     @Resource
-    private OpenAiService aiService;
-    @Resource
     private WeiXinSendMessageService weiXinSendMessage;
     @Resource
     private DingTalkSendMessageService dingTalkSendMessage;
+
+    private List<OpenAiService> aiService;
+    private int currentChat;
+
+    public AiReplySend(List<OpenAiService> aiService) {
+        this.aiService = aiService;
+        this.currentChat = aiService.size() - 1;
+    }
 
     /**
      * ai交互，主动发送ai回复的消息到微信
@@ -33,7 +41,7 @@ public class AiReplySend {
     @Async
     public void WXSend(String content, String fromUserName) {
 
-        String answer = aiService.megumiAsk(content);
+        String answer = ask(content);
 
         weiXinSendMessage.sendMessage(
                 new TextMessageReq(
@@ -52,12 +60,28 @@ public class AiReplySend {
     @Async
     public void dingTalkSend(String content, boolean oto, String id) {
 
-        String answer = aiService.megumiAsk(content);
+        String answer = ask(content);
 
         if (oto) {
             dingTalkSendMessage.oToMessages(id, answer);
         } else {
             dingTalkSendMessage.groupMessages(id, answer);
         }
+    }
+
+    private String ask(String content) {
+
+        if (Pattern.matches("^(\\d+)#.*", content)) {
+            String[] split = content.split("#");
+            currentChat = Integer.parseInt(split[0]);
+            content = split[1];
+        }
+
+        if (currentChat < 0 || currentChat >= aiService.size()) {
+            currentChat = aiService.size() - 1;
+            return String.format("请选择0～%s的会话", aiService.size() - 1);
+        }
+
+        return aiService.get(currentChat).ask(content);
     }
 }

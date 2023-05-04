@@ -25,7 +25,11 @@ public class OpenAiConfig {
     /**
      * megumi页面会话ID
      */
-    private String megumiParentMessageId;
+    private String megumi;
+    /**
+     * wuguokai页面userID
+     */
+    private String wuguokai;
 
     /**
      * 请求头信息
@@ -40,14 +44,4 @@ public class OpenAiConfig {
 
         return headers;
     }
-
-
-    /**
-     * 获取chatGPT回应
-     */
-    public static final String URL = "https://api.openai.com/v1/completions";
-    /**
-     * 使用 <a href="https://megumi.ml">web页面</a> url
-     */
-    public static final String MEGUMI_URL = "https://megumi.ml/chat-process";
 }
