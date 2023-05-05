@@ -39,7 +39,6 @@ public class MegumiAiServiceImpl implements OpenAiService, Ordered {
             String substring = string.substring(string.lastIndexOf("\n"));
 
             return JSONObject.parseObject(substring).getString("text");
-
         } catch (Exception e) {
             log.error("megumi页面 AI问答异常", e);
             return e.getMessage();

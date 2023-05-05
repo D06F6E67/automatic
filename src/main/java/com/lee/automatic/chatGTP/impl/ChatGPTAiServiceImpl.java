@@ -50,7 +50,6 @@ public class ChatGPTAiServiceImpl implements OpenAiService, Ordered {
             }
 
             return jsonObject.getJSONArray("choices").getJSONObject(0).getString("text");
-
         } catch (Exception e) {
             log.error("ChatGPT AI问答异常", e);
             return e.getMessage();

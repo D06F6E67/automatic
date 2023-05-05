@@ -40,7 +40,6 @@ public class WuGuoKaiAiServiceImpl implements OpenAiService, Ordered {
                     new WuGuoKaiReq(prompt, null, openAiConfig.getWuguokai(), true));
 
             return post.body().string();
-
         } catch (Exception e) {
             log.error("megumi页面 AI问答异常", e);
             return e.getMessage();

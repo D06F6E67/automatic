@@ -1,6 +1,6 @@
 package com.lee.automatic.chatGPT;
 
-import com.lee.automatic.chatGTP.impl.ChatosAiServiceImpl;
+import com.lee.automatic.chatGTP.impl.XeasyAiServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -15,14 +15,16 @@ import javax.annotation.Resource;
 public class OpenAiServiceTest {
 
     @Resource
-    private ChatosAiServiceImpl chatosAiServiceImpl;
+    private XeasyAiServiceImpl aiService;
 
 
     @Test
     public void ask() {
-        // openAiService.forEach(ai -> {
-            String hello = chatosAiServiceImpl.ask("hello");
+        // aiService.forEach(ai -> {
+            String hello = aiService.ask("hello");
             System.out.println(hello);
+
+        //     System.out.println(ai.getClass());
         // });
     }
 }
