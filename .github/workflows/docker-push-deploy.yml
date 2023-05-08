@@ -30,14 +30,14 @@ jobs:
           docker tag automatic ${{ vars.IMAGE_NAME }}:latest
           docker push ${{ vars.IMAGE_NAME }}:latest
 
-      - name: Deploy to Server
-        uses: cross-the-world/ssh-pipeline@master
-        with:
-          host: ${{ secrets.HOST }}
-          user: root
-          pass: ${{ secrets.PASS }}
-          script: | 
-            cd ${{ vars.WORK }}
-            docker pull ${{ vars.IMAGE_NAME }}
-            docker-compose up -d
-            docker rmi `docker images | grep ${{ vars.IMAGE_NAME }} | grep none | awk '{print $3}'`
+#      - name: Deploy to Server
+#        uses: cross-the-world/ssh-pipeline@master
+#        with:
+#          host: ${{ secrets.HOST }}
+#          user: root
+#          pass: ${{ secrets.PASS }}
+#          script: |
+#            cd ${{ vars.WORK }}
+#            docker pull ${{ vars.IMAGE_NAME }}
+#            docker-compose up -d
+#            docker rmi `docker images | grep ${{ vars.IMAGE_NAME }} | grep none | awk '{print $3}'`
