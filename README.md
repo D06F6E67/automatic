@@ -82,3 +82,11 @@
 2. 应用开发 --> 企业内部开发 --> 创建应用 <br/> ![img.png](assets/dingtalk_create.png)
 3. 获取应用的信息，将两个配置写入 docker-compose中 <br/> ![img.png](assets/dingtalk_info.png)
 4. 设置消息退送地址，自己的服务器公网IP:8888/dingtalk  然后点击发布 <br/> ![img.png](assets/dinktalk_config.png)
+
+# 电信微信小程序云宠物
+
+## 需要自己抓包
+1. 抓取 https://api.k189.cn/app1/api 的body放到 telecom_getCodeBody
+![抓包数据](assets/telecom_getCodeBody.png)
+2. 抓取 https://hdmf.k189.cn/actServ/userJoin/getUserInfoByCode 的body中的aid放到 telecom_aid 如下图
+![yaml](assets/telecom_yml.png)

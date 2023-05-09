@@ -11,4 +11,8 @@ public class Constant {
      * 问AI问题正则
      */
     public static final String ASK_CONTENT_REGEX = "^(\\d+)#.*";
+    /**
+     * 登陆最大重试次数
+     */
+    public static final int LOGIN_MAX_RETRIES = 5;
 }

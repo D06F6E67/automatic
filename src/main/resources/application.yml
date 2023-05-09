@@ -21,6 +21,10 @@ chatgpt:
     megumi: ${chatgpt_megumi}
     wuguokai: ${chatgpt_wuguokai}
 
+telecom:
+  aid: ${telecom_aid}
+  getCodeBody: ${telecom_getCodeBody}
+
 pudn:
   username: ${pudn_username}
   password: ${pudn_password}

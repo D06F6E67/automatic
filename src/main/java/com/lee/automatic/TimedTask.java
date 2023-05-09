@@ -27,6 +27,11 @@ public class TimedTask {
     @Resource
     private TelecomService telecomService;
 
+    /**
+     * 每日签到任务
+     * 周六周日 11点运行
+     * 周一～周五8点半运行
+     */
     @Scheduled(cron = "0 0 11 ? * SAT,SUN")
     @Scheduled(cron = "0 30 8 ? * MON-FRI")
     public void job() {
@@ -35,12 +40,19 @@ public class TimedTask {
                 new TextCardMessageReq(
                         RobotEnum.AUTOMATIC,
                         jueJinJob.job()
+                                + telecomService.job()
                 )
         );
     }
 
-    @Scheduled(cron = "0 0,3 * * * *")
+    /**
+     * 电信喂猫任务
+     * 5分钟运行一次
+     */
+    @Scheduled(cron = "0 0/5 * * * *")
     public void feedCat() {
-        telecomService.feedCat();
+        if (!telecomService.feedCat()) {
+            telecomService.feedCat();
+        }
     }
 }
