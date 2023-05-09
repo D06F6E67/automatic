@@ -65,5 +65,4 @@ public class WeiXinConfig {
      * 发送应用消息
      */
     public static final String SEND_MESSAGE_URL = "https://qyapi.weixin.qq.com/cgi-bin/message/send";
-
 }

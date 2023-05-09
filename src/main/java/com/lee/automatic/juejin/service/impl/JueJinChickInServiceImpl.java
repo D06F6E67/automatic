@@ -25,8 +25,6 @@ public class JueJinChickInServiceImpl implements JueJinService, Ordered {
 
     @Resource
     private JueJinConfig jueJinConfig;
-    @Resource
-    private JueJinDipLuckServiceImpl jueJinDipLuckServiceImpl;
 
     /**
      * 签到

@@ -78,7 +78,11 @@ public class HttpUtils {
 
         RequestBody requestBody;
         if (Objects.nonNull(body)) {
-            requestBody = RequestBody.create(JSONObject.toJSONString(body), JSON);
+            if (body instanceof String) {
+                requestBody = RequestBody.create(body.toString(), JSON);
+            } else {
+                requestBody = RequestBody.create(JSONObject.toJSONString(body), JSON);
+            }
         } else {
             requestBody = RequestBody.create("", null);
         }
@@ -145,5 +149,4 @@ public class HttpUtils {
 
         return link.toString();
     }
-
 }

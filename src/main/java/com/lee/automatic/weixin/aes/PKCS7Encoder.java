@@ -63,5 +63,4 @@ class PKCS7Encoder {
 		byte target = (byte) (a & 0xFF);
 		return (char) target;
 	}
-
 }

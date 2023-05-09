@@ -23,5 +23,4 @@ public class YouDaoConfig {
      * 签到
      */
     public static final String CHECK_IN_URL = "https://note.youdao.com/yws/mapi/user?method=checkin";
-
 }

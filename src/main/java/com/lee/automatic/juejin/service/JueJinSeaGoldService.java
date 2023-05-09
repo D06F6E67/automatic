@@ -343,5 +343,4 @@ public class JueJinSeaGoldService {
         return String.format("  海底掘金：\n    今日获得：%s个\n    运行次数：%s次\n",
                 todayDiamond, runNumber);
     }
-
 }

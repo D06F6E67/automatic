@@ -22,5 +22,4 @@ public class ReceiveMessageResp {
      * 消息结构体加密后的字符串
      */
     private String encrypt;
-
 }

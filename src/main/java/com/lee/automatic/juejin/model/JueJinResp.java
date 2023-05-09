@@ -22,5 +22,4 @@ public class JueJinResp<T> {
      * 响应数据
      */
     private T data;
-
 }

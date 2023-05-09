@@ -1,5 +1,6 @@
 package com.lee.automatic.chatGTP;
 
+import com.lee.automatic.common.constant.Constant;
 import com.lee.automatic.dingtalk.service.DingTalkSendMessageService;
 import com.lee.automatic.weixin.RobotEnum;
 import com.lee.automatic.weixin.model.send.TextMessageReq;
@@ -24,7 +25,7 @@ public class AiReplySend {
     @Resource
     private DingTalkSendMessageService dingTalkSendMessage;
 
-    private List<OpenAiService> aiService;
+    private final List<OpenAiService> aiService;
     private int currentChat;
 
     public AiReplySend(List<OpenAiService> aiService) {
@@ -69,9 +70,15 @@ public class AiReplySend {
         }
     }
 
+    /**
+     * 问
+     *
+     * @param content 问题
+     * @return 答案
+     */
     private String ask(String content) {
 
-        if (Pattern.matches("^(\\d+)#.*", content)) {
+        if (Pattern.matches(Constant.ASK_CONTENT_REGEX, content)) {
             String[] split = content.split("#");
             currentChat = Integer.parseInt(split[0]);
             content = split[1];

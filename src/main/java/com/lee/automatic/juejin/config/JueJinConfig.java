@@ -91,5 +91,4 @@ public class JueJinConfig {
      * 沸点列表
      */
     public static final String BOILING_POINT_LIST = "https://api.juejin.cn/recommend_api/v1/short_msg/recommend";
-
 }

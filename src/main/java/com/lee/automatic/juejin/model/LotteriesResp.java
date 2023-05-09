@@ -22,4 +22,3 @@ public class LotteriesResp {
      */
     Integer count;
 }
-

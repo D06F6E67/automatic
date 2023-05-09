@@ -58,5 +58,4 @@ public class AesException extends Exception {
 		super(getMessage(code));
 		this.code = code;
 	}
-
 }

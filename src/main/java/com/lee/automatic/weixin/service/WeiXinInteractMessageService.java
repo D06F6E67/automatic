@@ -124,5 +124,4 @@ public class WeiXinInteractMessageService {
         NodeList nodeList = element.getElementsByTagName(name);
         return nodeList.item(0).getTextContent();
     }
-
 }

@@ -16,7 +16,6 @@ import java.util.Map;
  */
 public class JwtUtils {
 
-
     private static final int EXPIRE = 10 * 24 * 60;
 
     /**

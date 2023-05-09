@@ -48,5 +48,4 @@ class WeiXinTextCar {
         this.description = description;
         this.url = "URL";
     }
-
 }

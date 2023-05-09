@@ -56,5 +56,4 @@ public class PudnConfig {
      * 获取金币状态
      */
     public static String GOLD_INFO_URL = "https://api.pudn.com/portal/gold/info";
-
 }

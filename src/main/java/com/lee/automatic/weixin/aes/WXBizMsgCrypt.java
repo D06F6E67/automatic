@@ -282,5 +282,4 @@ public class WXBizMsgCrypt {
 		String result = decrypt(echoStr);
 		return result;
 	}
-
 }

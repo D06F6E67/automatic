@@ -120,5 +120,4 @@ public class GameConfig {
      * 海底掘金刷新
      */
     public static final String SEA_FRESH_URL = "https://juejin-game.bytedance.com/game/sea-gold/game/fresh_map";
-
 }

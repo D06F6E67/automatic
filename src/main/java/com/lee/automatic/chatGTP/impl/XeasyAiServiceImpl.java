@@ -39,4 +39,3 @@ public class XeasyAiServiceImpl implements OpenAiService, Ordered {
         return 4;
     }
 }
-
