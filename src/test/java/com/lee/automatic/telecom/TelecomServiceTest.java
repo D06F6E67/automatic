@@ -40,7 +40,7 @@ public class TelecomServiceTest {
 
     @Test
     public void feedCat() {
-        service.feedCat();
+        System.out.println(service.feedCat());
     }
 
     @Test

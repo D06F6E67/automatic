@@ -47,11 +47,11 @@ public class TimedTask {
 
     /**
      * 电信喂猫任务
-     * 5分钟运行一次
+     * 5分钟的0秒和30秒运行
      */
-    @Scheduled(cron = "0 0/5 * * * *")
+    @Scheduled(cron = "0,30 0/5 * * * *")
     public void feedCat() {
-        if (!telecomService.feedCat()) {
+        if (telecomService.feedCat() ) {
             telecomService.feedCat();
         }
     }

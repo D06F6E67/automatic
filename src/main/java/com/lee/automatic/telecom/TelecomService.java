@@ -189,7 +189,7 @@ public class TelecomService {
             }
 
             if (resp.getCode() == HttpConstant.CODE_9999) {
-                return "没有喂猫";
+                return Constant.NOT_FEED_CAT;
             }
 
             FeedCatDateResp date = JSONObject.parseObject(resp.getResult(), FeedCatDateResp.class);
@@ -207,6 +207,12 @@ public class TelecomService {
      */
     public boolean feedCat() {
         try {
+
+            String feedCatDate = getLastTimeFeedCatDate();
+            if (!Constant.NOT_FEED_CAT.equals(feedCatDate)) {
+                return true;
+            }
+
             Response post = HttpUtils.post(TelecomConfig.FEED_CAT_URL, config.getHeaders(),
                     new TaskReq(TelecomConfig.FEED_CAT_TASK_ID, config.getAid()));
 
@@ -215,7 +221,7 @@ public class TelecomService {
 
             if (Objects.isNull(resp) || resp.getCode() == HttpConstant.CODE_403) {
                 if (login()) {
-                    feedCat();
+                    return feedCat();
                 }
             }
 
