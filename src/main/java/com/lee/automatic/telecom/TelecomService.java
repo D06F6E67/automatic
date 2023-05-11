@@ -94,12 +94,40 @@ public class TelecomService {
     }
 
     /**
+     * 查询签到天数
+     *
+     * @return 签到天数
+     */
+    public Integer queryChickIn() {
+        try {
+            Response post = HttpUtils.post(TelecomConfig.QUERY_CHECK_IN_URL, config.getHeaders(),
+                    new AidReq(config.getAid()));
+
+            TelecomResp<QueryCheckInResp> resp = JSONObject.parseObject(post.body().string(),
+                    new TypeReference<TelecomResp<QueryCheckInResp>>() {});
+
+            if (Objects.isNull(resp) || resp.getCode() == HttpConstant.CODE_403) {
+                if (login()) {
+                    return queryChickIn();
+                }
+            }
+
+            return resp.getResult().getTotalSignInDays();
+        } catch (Exception e) {
+            log.error("电信云宠物 查询签到天数", e);
+        }
+        return 0;
+    }
+
+    /**
      * 签到
      *
      * @return 签到结果
      */
-    public String chickIn() {
+    public String checkIn() {
         try {
+            queryChickIn();
+
             Response post = HttpUtils.post(TelecomConfig.CHECK_IN_URL, config.getHeaders(),
                     new AidReq(config.getAid()));
 
@@ -108,7 +136,7 @@ public class TelecomService {
 
             if (Objects.isNull(resp) || resp.getCode() == HttpConstant.CODE_403) {
                 if (login()) {
-                    return chickIn();
+                    return checkIn();
                 }
             }
 
@@ -238,7 +266,7 @@ public class TelecomService {
      * @return 任务结果
      */
     public String job() {
-        return String.format("电信\n  签到结果：%s\n  浏览任务：%s\n  猫粮数量：%s\n  喂猫时间：%s\n",
-                chickIn(), browsePageTask(), getCatFoodAmount(), getLastTimeFeedCatDate());
+        return String.format("电信\n  签到结果：%s\n  签到天数：%s\n  浏览任务：%s\n  猫粮数量：%s\n  喂猫时间：%s\n",
+                checkIn(), queryChickIn(), browsePageTask(), getCatFoodAmount(), getLastTimeFeedCatDate());
     }
 }

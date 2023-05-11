@@ -67,6 +67,10 @@ public class TelecomConfig {
      */
     public static String LOGIN_URL = "https://hdmf.k189.cn/actServ/userJoin/getUserInfoByCode";
     /**
+     * 查询签到
+     */
+    public static String QUERY_CHECK_IN_URL = "https://hdmf.k189.cn/actServ/userActivity/querySignInData";
+    /**
      * 签到
      */
     public static String CHECK_IN_URL = "https://hdmf.k189.cn/actServ/userActivity/signIn";

@@ -19,8 +19,13 @@ public class TelecomServiceTest {
     private TelecomService service;
 
     @Test
+    public void queryChickIn() {
+        System.out.println(service.queryChickIn());
+    }
+
+    @Test
     public void chickIn() {
-        System.out.println(service.chickIn());
+        System.out.println(service.checkIn());
     }
 
     @Test
