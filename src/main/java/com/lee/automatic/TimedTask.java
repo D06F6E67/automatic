@@ -45,14 +45,14 @@ public class TimedTask {
         );
     }
 
-    /**
-     * 电信喂猫任务
-     * 5分钟的0秒和30秒运行
-     */
-    @Scheduled(cron = "0,30 0/5 * * * *")
-    public void feedCat() {
-        if (telecomService.feedCat() ) {
-            telecomService.feedCat();
-        }
-    }
+    // /**
+    //  * 电信喂猫任务
+    //  * 5分钟的0秒和30秒运行
+    //  */
+    // @Scheduled(cron = "0,30 0/5 * * * *")
+    // public void feedCat() {
+    //     if (telecomService.feedCat() ) {
+    //         telecomService.feedCat();
+    //     }
+    // }
 }

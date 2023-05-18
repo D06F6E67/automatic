@@ -266,7 +266,10 @@ public class TelecomService {
      * @return 任务结果
      */
     public String job() {
-        return String.format("电信\n  签到结果：%s\n  签到天数：%s\n  浏览任务：%s\n  猫粮数量：%s\n  喂猫时间：%s\n",
-                checkIn(), queryChickIn(), browsePageTask(), getCatFoodAmount(), getLastTimeFeedCatDate());
+        // return String.format("电信\n  签到结果：%s\n  签到天数：%s\n  浏览任务：%s\n  猫粮数量：%s\n  喂猫时间：%s\n",
+        //         checkIn(), queryChickIn(), browsePageTask(), getCatFoodAmount(), getLastTimeFeedCatDate());
+
+        return String.format("电信\n  签到天数：%s\n  猫粮数量：%s\n  喂猫时间：%s\n",
+                        queryChickIn(), getCatFoodAmount(), getLastTimeFeedCatDate());
     }
 }
