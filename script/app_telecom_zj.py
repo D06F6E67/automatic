@@ -28,6 +28,7 @@
 1.环境变量说明:
     必须  TELECOM_PHONE : 电信手机号
     必须  TELECOM_PASSWORD : 电信服务密码 填写后会执行更多任务
+    TELECOM_LOTTERY : 超过870抽奖默认False，添加环境变量True打开
 """
 from os import environ, path as os_path
 from re import findall
@@ -35,6 +36,7 @@ from time import sleep, time, mktime, strptime, strftime
 
 account = environ.get("TELECOM_PHONE") if environ.get("TELECOM_PHONE") else ""
 pwd = environ.get("TELECOM_PASSWORD") if environ.get("TELECOM_PASSWORD") else ""
+lottery = environ.get("TELECOM_LOTTERY") if environ.get("TELECOM_LOTTERY") else False
 if account == "" or pwd == "":
     print("请填写电信账号密码")
     # exit(0)
@@ -237,12 +239,12 @@ class TelecomLogin:
             "Cache-Control": "no-cache"
         }
         xml_data = post(url, headers=headers, data=body).text
-        print(xml_data)
+        # print(xml_data)
         doc = XML(xml_data)
         secret_ticket = doc.find("ResponseData/Data/Ticket").text
-        print("secret: " + secret_ticket)
+        # print("secret: " + secret_ticket)
         ticket = self.decrypt_ticket(secret_ticket)
-        print("ticket: " + ticket)
+        # print("ticket: " + ticket)
         return ticket
     def main(self):
         if os_path.exists("./zjdx.json"):
@@ -572,11 +574,11 @@ class ZJDX:
         url = "https://hdmf.k189.cn/actServ/activityData/findPrizes"
         body = {"aid": "478AF5C72927AA8150CE42A033C0C0A8"}
         data = self.session.post(url, headers=self.headers, json=body).json()
-        print(data)
+        # print(data)
         if data["code"] == 200:
-            #score = int(data['result']['awardsNum'][0]['value'])
+            score = int(data['result']['awardsNum'][0]['value'])
             #print(score)
-            # print(f"当前共有猫粮{str(score)}")
+            print(f"当前共有猫粮{str(score)}")
             return data
         return 0
             # push("浙江电信", f"总计兑换{data['result']['awardsNum'][0]['value']}")
@@ -619,11 +621,11 @@ class ZJDX:
                     sleep(15)
                 zjdx.share()
         findPrizes = self.get_findPrizes()
-        
-        if findPrizes['result']['awardsNum'][0]['value'] >= 870:
+
+        if findPrizes['result']['awardsNum'][0]['value'] >= 870 and lottery:
             print(f"当前猫粮大于870 抽奖")
             self.lotter()
-            
+
 
 if __name__ == '__main__':
     zjdx = ZJDX()
