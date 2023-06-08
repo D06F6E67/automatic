@@ -456,6 +456,39 @@ class ZJDX:
         url = "https://hdmf.k189.cn/actServ/userActivity/signIn"
         data = self.session.post(url, headers=self.headers, json=body).json()
         print(data)
+
+    def check_in2(self):
+        url = "https://hdmf.k189.cn/actServ/userActivity/signIn"
+        body = {"aid": "CD5B8BB5BBCF76631512CA3732A35008"}
+        headers = {
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7",
+            "access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "Content-Length": "42",
+            "Content-Type": "application/json;charset=UTF-8",
+            "csrf_token": self.csrf_token,
+            "Host": "hdmf.k189.cn",
+            "Origin": "https://hdmf.k189.cn",
+            "Pragma": "no-cache",
+            "Referer": f"https://hdmf.k189.cn/signinHd/?aid=CD5B8BB5BBCF76631512CA3732A35008&channelId=69&posId=68607-65077-69&posName=805E4CA4E8E4775E84327D22047F0BD8&channelName=D23F21F5710593990D72A94F16F7D351&ticket={self.ticket}",
+            "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+            "X-Requested-With": "XMLHttpRequest"
+        }
+        data = self.session.post(url, headers=headers, json=body).json()
+        print(data)
+        # url = "https://hdmf.k189.cn/actServ/task/doTask"
+        # body = {"taskId": "1657702347690", "aid": "CD5B8BB5BBCF76631512CA3732A35008"}
+        # data = self.session.post(url, headers=headers, json=body).json()
+        # print(data)
     def finish_task(self, taskcode):
         url1 = "https://wapzj.189.cn/zhuanti/hdmf/ActivityHDMF/sendRwPrize.whtml"
         body = f"activity_id=HDMF2819&taskCode={taskcode}&channelId=61&posCode=2055-0-61"
@@ -610,6 +643,7 @@ class ZJDX:
         if datetime.now().hour == 0:
             self.check_in()
             self.check_in1()
+            self.check_in2()
             if datetime.now().day == 1:
                 self.exchange()
             taskcode_list = ["1657702206332", "1657683473029"]  # 1657702206332 体验服务 1次  1657683473029 旅行 5次
