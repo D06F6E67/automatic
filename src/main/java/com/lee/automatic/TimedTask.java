@@ -40,7 +40,7 @@ public class TimedTask {
                 new TextCardMessageReq(
                         RobotEnum.AUTOMATIC,
                         jueJinJob.job()
-                                + telecomService.job()
+                                // + telecomService.job()
                 )
         );
     }
