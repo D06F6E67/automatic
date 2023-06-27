@@ -24,7 +24,7 @@ import java.util.List;
  * @author Lee
  */
 @Slf4j
-@Service
+// @Service
 public class JueJinBugFixServiceImpl implements JueJinService, Ordered {
 
     @Resource
